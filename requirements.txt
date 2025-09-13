@@ -1,0 +1,17 @@
+# CV
+opencv-python-headless
+numpy
+
+# ML
+torch
+onnx
+onnxruntime
+
+# Qualcomm SDK - Add specific package from docs later
+
+# CAD & UI
+ezdxf
+gradio
+
+# Packaging
+pyinstaller

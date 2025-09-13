@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.env
+
+# Models & Data
+*.pth
+*.onnx
+*.pt
+data/
+outputs/
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
