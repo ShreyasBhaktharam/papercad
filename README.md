@@ -3,21 +3,21 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 
-## 🎯 Project Overview
+## Project Overview
 
 **PaperCAD Edge** is an innovative AI-powered system that transforms hand-drawn architectural sketches into professional, parametric CAD models. Built for the **Qualcomm x NYU Edge AI Developer Hackathon**, this project delivers "Geometric Intelligence" - the ability to understand architectural intent from rough sketches and generate clean, editable floor plans.
 
-### ✨ Key Features
+### Key Features
 
-- **🖼️ Multi-Format Input**: Processes hand-drawn sketches, photos, and existing floor plans
-- **🧠 Geometric Intelligence**: Advanced constraint detection and solving (perpendicular, parallel, tangency, symmetry)
-- **🏠 Room Recognition**: Automatic room detection and classification (kitchen, bedroom, bathroom, etc.)
-- **📐 Real-World Scaling**: OCR integration for dimension extraction and scaling
-- **🎨 Color-Coded Output**: Professional CAD-style visualization with room types
-- **⚡ Performance Optimized**: 6-8x speedup for real-time processing
-- **🔧 Post-Processing**: Advanced smoothing and stroke consolidation
+- **Multi-Format Input**: Processes hand-drawn sketches, photos, and existing floor plans
+- **Geometric Intelligence**: Advanced constraint detection and solving (perpendicular, parallel, tangency, symmetry)
+- **Room Recognition**: Automatic room detection and classification (kitchen, bedroom, bathroom, etc.)
+- **Real-World Scaling**: OCR integration for dimension extraction and scaling
+- **Color-Coded Output**: Professional CAD-style visualization with room types
+- **Performance Optimized**: 6-8x speedup for real-time processing
+- **Post-Processing**: Advanced smoothing and stroke consolidation
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 
@@ -61,7 +61,7 @@ processor.process_floor_plan('data/image_samples/test_3.png', 'output/colored_pl
 python tools/postprocess_light.py data/image_samples/test_4.jpeg output/smoothed_plan.png
 ```
 
-## 🏗️ Architecture
+## Architecture
 
 ### Core Components
 
@@ -88,7 +88,7 @@ python tools/postprocess_light.py data/image_samples/test_4.jpeg output/smoothed
 Hand-Drawn Sketch → Line Extraction → Constraint Detection → Geometric Solving → Room Detection → Color Visualization
 ```
 
-## 📊 Performance Metrics
+## Performance Metrics
 
 ### Real Floor Plan Results
 - **Processing Speed**: 6-8x faster than baseline
@@ -103,7 +103,7 @@ Floor Plan 2: 1,607 lines → 19s processing (8.50x speedup)
 Mathematical Precision: Zero-error tangency calculations
 ```
 
-## 🎨 Sample Outputs
+## Sample Outputs
 
 ### Input → Output Examples
 
@@ -117,7 +117,7 @@ Mathematical Precision: Zero-error tangency calculations
 - **Output**: Professional floor plan with multiple rooms
 - **Features**: Advanced post-processing, stroke consolidation
 
-## 🛠️ API Reference
+## API Reference
 
 ### GeometryEngine
 
@@ -149,7 +149,7 @@ processor = ColoredFloorPlanProcessor()
 processor.process_floor_plan(input_path, output_path)
 ```
 
-## 🏆 Hackathon Readiness
+## Hackathon Readiness
 
 ### Technical Implementation (40 points)
 - ✅ **Complete geometry engine** with all constraint types
@@ -168,7 +168,7 @@ processor.process_floor_plan(input_path, output_path)
 - ✅ **Local processing** for privacy and speed
 - ✅ **Optimized for Snapdragon X Elite** deployment
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 papercad/
@@ -196,7 +196,7 @@ papercad/
 └── requirements.txt          # Python dependencies
 ```
 
-## 🧪 Testing
+## Testing
 
 ### Run Complete Feature Tests
 ```bash
@@ -210,14 +210,14 @@ python test_real_floorplans.py
 
 ### Expected Output
 ```
-🎉 ALL TASKS VALIDATED!
-✅ Core geometric engine: 100% complete
-✅ Advanced features: 100% complete
-✅ Ready for CV/UI integration and NPU deployment
-🚀 Geometry engine exceeds hackathon requirements!
+ALL TASKS VALIDATED!
+Core geometric engine: 100% complete
+Advanced features: 100% complete
+Ready for CV/UI integration and NPU deployment
+Geometry engine exceeds hackathon requirements!
 ```
 
-## 🔮 Future Enhancements
+## Future Enhancements
 
 - **3D Extrusion**: Convert 2D plans to 3D models
 - **Material Recognition**: Identify wall materials and fixtures
@@ -225,15 +225,15 @@ python test_real_floorplans.py
 - **AR Integration**: Overlay digital plans on physical spaces
 - **Multi-Floor Support**: Handle complex building layouts
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
-## 📞 Contact
+## Contact
 
 **Team**: Qualcomm x NYU Edge AI Hackathon Participants  
 **Project**: PaperCAD Edge - Geometry Lead Implementation  
@@ -241,4 +241,4 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ---
 
-*Built with ❤️ for the Qualcomm x NYU Edge AI Developer Hackathon*
+*Built for the Qualcomm x NYU Edge AI Developer Hackathon*
