@@ -1,40 +1,59 @@
-# Local PNG to DXF Converter
+# PaperCAD Edge: Intelligent Sketch-to-CAD Converter
 
-A streamlined version of the floorplan to 3D DXF converter that runs locally and can utilize NPU acceleration when available.
+PaperCAD Edge is a powerful, local-first application that transforms both **hand-drawn sketches** and **professional floor plans** into clean, editable, and intelligent CAD models. By leveraging NPU acceleration, PaperCAD Edge delivers real-time performance, making it ideal for on-the-go design and digitization.
 
-## Features
+-----
 
-- **PNG to DXF Conversion**: Converts floorplan images to 3D DXF files
-- **Text Removal**: Automatically removes text labels from floorplans using MSER
-- **Line Detection**: Detects wall lines using LSD (Line Segment Detector) or Hough transforms
-- **3D Generation**: Creates 3D wall prisms with proper thickness and height
-- **Color Analysis**: Assigns different layers based on detected colors
-- **NPU Support**: Optional NPU acceleration for faster processing
+## 🚀 Key Use Cases
 
-## Installation
+  * **Real-Time Conversion**: Use your device's camera to capture a live image of a sketch and watch it instantly become a clean CAD model on your screen.
+  * **Hand-Drawn Sketch Digitization**: Transform rough, back-of-the-napkin sketches into geometrically perfect and editable DXF files. Our "**Geometric Intelligence**" engine cleans up imperfections and understands your design intent.
+  * **Professional Floor Plan Processing**: Upload existing high-quality floor plans or scanned drawings to quickly convert them into layered, parametric CAD models.
 
-1. Install Python 3.8 or higher
-2. Install dependencies:
-   ```bash
-   pip install -r requirements_local.txt
-   ```
+-----
 
-## Usage
+## ✨ Features
+
+  * **Multi-Input Support**: Processes PNGs, JPEGs, and live camera feeds.
+  * **Geometric Intelligence**: Goes beyond simple tracing to infer constraints like perpendicularity and parallelism, cleaning up rough drawings.
+  * **AI-Powered Line & Symbol Detection**: Uses a pipeline of advanced models to accurately identify walls, doors, windows, and other symbols.
+  * **Text & Dimension Recognition**: Automatically reads text labels from drawings using **OCR** (Optical Character Recognition), preparing the geometry for clean, scaled export.
+  * **3D Generation**: Instantly extrudes 2D floor plans into 3D wall prisms with proper thickness and height.
+  * **NPU Acceleration**: Seamlessly utilizes the NPU for core AI tasks to ensure real-time performance and energy efficiency.
+
+-----
+
+## 🧠 Our AI Pipeline
+
+Our system uses a combination of specialized, lightweight models for maximum accuracy and speed.
+
+  * **Structure Detection**: A lightweight CNN + Transformer architecture (like M-LSD) turns the image into clean line segments.
+  * **Symbol Detection**: A quantized YOLOv8-Nano model identifies specific symbols like doors and windows.
+  * **Text Recognition**: We use PaddleOCR for its high accuracy and efficiency in reading dimensions and labels.
+  * **Geometric Refinement**: A Graph Neural Network (GNN) analyzes the relationships between detected lines to refine alignment and snap junctions, ensuring a geometrically perfect output.
+
+-----
+
+## 🛠️ Installation
+
+1.  Install Python 3.8 or higher.
+2.  Install dependencies:
+    ```bash
+    pip install -r requirements_local.txt
+    ```
+
+-----
+
+## 💻 Usage
 
 ### Command Line
 
 ```bash
-# Basic usage
-python local_png_to_dxf.py input_floorplan.png
+# Convert a hand-drawn sketch
+python local_png_to_dxf.py my_sketch.png -o sketch.dxf
 
-# With custom output path
-python local_png_to_dxf.py input_floorplan.png -o output.dxf
-
-# With custom scale and dimensions
-python local_png_to_dxf.py input_floorplan.png --pixels-per-meter 150 --wall-thickness 0.1 --wall-height 2.5
-
-# Disable 3D preview
-python local_png_to_dxf.py input_floorplan.png --no-preview
+# Convert a professional floorplan with custom scale
+python local_png_to_dxf.py professional_plan.png --pixels-per-meter 150 --wall-thickness 0.1 --wall-height 2.5
 ```
 
 ### Python API
@@ -50,55 +69,27 @@ output_path = process_png_to_dxf(
 )
 ```
 
-### Test the Converter
+-----
 
-```bash
-# Place a test PNG file in the current directory
-python test_local_converter.py
-```
-
-## Configuration
+## ⚙️ Configuration
 
 You can modify the `Config` class in `local_png_to_dxf.py` to adjust:
 
-- **Scale**: `PIXELS_PER_METER` - pixels per meter ratio
-- **Wall Properties**: `WALL_THICK_M`, `WALL_HEIGHT_M` - wall dimensions
-- **Processing**: `SNAP_TOL_DEG`, `MERGE_GAP_PX` - line processing parameters
-- **NPU**: `USE_NPU`, `NPU_PROVIDER` - NPU acceleration settings
+  * **Scale**: `PIXELS_PER_METER`
+  * **Wall Properties**: `WALL_THICK_M`, `WALL_HEIGHT_M`
+  * **Processing**: `SNAP_TOL_DEG`, `MERGE_GAP_PX`
+  * **NPU**: `USE_NPU`, `NPU_PROVIDER`
 
-## Output
+-----
 
-The converter generates:
-- **3D DXF file** with colored wall layers
-- **3D preview** (optional) showing the generated geometry
-- **Console output** with processing statistics
-
-## NPU Support
-
-If ONNX Runtime is available and NPU providers are detected, the converter will automatically use NPU acceleration for:
-- Text removal
-- Line detection
-- Other computer vision tasks
-
-## Troubleshooting
-
-1. **No line segments detected**: Try adjusting `MIN_SEG_LEN_PX` or `SNAP_TOL_DEG`
-2. **Poor text removal**: The MSER parameters can be tuned in `boxes_from_mser_filtered()`
-3. **NPU not working**: Check that ONNX Runtime is installed and NPU providers are available
-
-## File Structure
+## 📂 File Structure
 
 ```
-├── local_png_to_dxf.py      # Main converter (standalone)
-├── app_local.py             # Gradio web interface
+├── local_png_to_dxf.py      # Main converter logic
+├── app_local.py             # Gradio web interface for real-time demo
 ├── test_local_converter.py  # Test script
-├── batch_convert.py         # Batch processing
-├── setup_local.py           # Setup script
-├── example_usage.py         # Usage examples
 ├── requirements_local.txt   # Dependencies
-├── README_local.md         # This file
-└── outputs/                # Output directory
-    └── *.dxf              # Generated DXF files
+├── README.md                # This file
+└── outputs/                 # Default output directory
+    └── *.dxf                # Generated DXF files
 ```
-
-
